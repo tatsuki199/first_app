@@ -1,0 +1,56 @@
+<%# 44
+def 9.tims |t| do
+  puts "#{t+1}回目の繰り返し"
+end %>
+
+<%# 45
+num = rand(10)
+if num >= 5
+  puts "#{num}は4より大きい"
+else
+  puts "#{num}は5より小さい"
+end %>
+
+<%# 46
+def fortune(t)
+  num = rand(10)
+  lottery = ["凶","中吉","吉", "大吉"].shuffle
+  number = t*num%4
+  puts lottery[number]
+end
+puts "誕生日を入力してください"
+num = get.to_i
+fortune(num) %>
+
+<%# 47
+puts "以下から一つを選んで入力してください。
+・title
+・genre
+・year"
+
+choice = gets.to_chomp
+
+if choice = title
+  puts @movie.title
+elsif choice = genre
+  puts @movie.genre
+else
+  puts @movie.yesr
+end %>
+
+<%# 48
+class Person
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+end
+
+class Student < Person
+  def introduce
+    puts "私の名前は#{@name}です。#{@age}歳です"
+  end
+end
+
+test = Student.new("Taro", 20)
+test.introduce %>
