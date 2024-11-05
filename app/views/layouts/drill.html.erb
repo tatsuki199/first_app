@@ -250,3 +250,31 @@ def get_days(year, month)
   days = get_days(year, month)
   puts "#{year}年#{month}月は#{days}日間あります" %>
 
+<%# 54
+
+def register_data
+  puts "データの登録"
+end
+
+def show_data
+  puts "データの確認"
+end
+
+while true
+  puts "選択してください"
+  puts "[0]登録する"
+  puts "[1]データを確認する"
+  puts "[2]終了する"
+  input = gets.to_i
+
+  if input == 0
+    register_data
+  elsif input == 1
+    show_data
+  elsif input == 2
+    return false # exitが正解
+  else
+    puts "無効な値です"
+    return true # 未記入が正解
+  end
+end %>
