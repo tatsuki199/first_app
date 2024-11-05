@@ -278,3 +278,55 @@ while true
     return true # 未記入が正解
   end
 end %>
+
+55
+
+def register_data(humans)
+  puts "名前を入れてください"
+  name = gets.chomp
+  puts "年齢を入れてください"
+  age = gets.to_i
+  puts "身長(m単位)を入れてください"
+  height = gets.to_i
+  puts "体重を入れてください"
+  weight = gets.to_i
+  human = {name: name, age: age, height: height, weight: weight}
+  humans << human
+end
+
+def show_data_list(humans)
+  puts "見たい人の番号を選択してください"
+  index = 1
+  humans.each do |human|
+    puts "#{index}:#{human[:name]}"
+    index += 1
+  end
+  number = gets.to_i - 1
+  show_data(humans[number])
+end
+
+def show_data(humans)
+  puts "名前:#{humans[:name]}"
+  puts "年齢:#{humans[:age]}"
+  puts "身長:#{humans[:height]}"
+  puts "体重:#{humans[:weight]}"
+end
+
+humans = []
+while true
+  puts "選択してください"
+  puts "[0]登録する"
+  puts "[1]データを確認する"
+  puts "[2]終了する"
+  input = gets.to_i
+
+  if input == 0
+    register_data(humans)
+  elsif input == 1
+   show_data_list(humans)
+  elsif input == 2
+    exit
+  else
+    puts "無効な値です"
+  end
+end
