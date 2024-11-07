@@ -417,3 +417,73 @@ while true
     puts "無効な値です"
   end
 end %>
+
+58
+
+def register_data(data)
+  puts '名前を入力してください'
+  name = gets.chomp
+  while true
+    puts 'パンチ力を入力してください(0 ~ 100)'
+    punch = gets.to_i
+    if punch <= 0 || punch > 100
+      puts "100以下の数字を入力してください"
+    else
+      break
+    end
+  end
+  while true
+    puts 'キック力を入力してください(0 ~ 100)'
+    kick = gets.to_i
+    if kick <= 0 || kick > 100
+      puts "100以下の数字を入力してください"
+    else
+      break
+    end
+  end
+  while true
+    puts 'ジャンプ力を入力してください(0 ~ 100)'
+    jump = gets.to_i 
+    if jump <= 0 || jump > 100
+        puts "100以下の数字を入力してください"
+    else
+      break
+    end
+  end
+  datum = {name: name, punch: punch, kick: kick, jump: jump}
+  data << datum
+end
+
+def show_data_list(data)
+  index = 1
+  puts '見たい人の番号を選択してください'
+  data.each do |data|
+    puts "#{index}: #{data[:name]}"
+    index += 1
+  end
+  input = gets.to_i - 1
+  datum = data[input]
+  puts "名前:#{datum[:name]}"
+  puts "パンチ力:#{datum[:punch]}"
+  puts "キック力:#{datum[:kick]}"
+  puts "ジャンプ力:#{datum[:jump]}"
+end
+  
+data = []
+while true
+  puts '選択してください'
+  puts '[0]登録する'
+  puts '[1]データを確認する'
+  puts '[2]終了する'
+  input = gets.to_i
+
+  if input == 0
+    register_data(data)
+  elsif input == 1
+    show_data_list(data)
+  elsif input == 2
+    exit
+  else
+    puts '無効な値です'
+  end
+end
