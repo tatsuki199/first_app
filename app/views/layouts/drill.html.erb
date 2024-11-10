@@ -583,3 +583,103 @@ end %>
 
   dog_infomation = Dog.new
   %>
+
+<%# 61
+
+#0 車種、走行可能距離、乗車人数の入力と登録
+
+#1 番号と名前を表示その後選択された詳細表示
+
+#2 アプリケーションの終了
+
+def register_data(car)
+  puts "車種を入力してください"
+  type = gets.chomp
+  puts "1Lあたりの走行可能距離(km/l)を入力してください"
+  rank = gets.to_i
+  puts "乗車人数を入力してください"
+  number = gets.to_i
+  car_data = {type: type, rank: rank, number: number}
+  car << car_data
+end
+
+def show_data_list(cars)
+  cars.each_with_index do |car, index|
+    puts "#{index + 1}: #{car[:type]}"
+  end
+  input = gets.to_i - 1
+  car = cars[input]
+  puts "車種: #{car[:type]}"
+  puts "燃費: #{car[:rank]}km/l"
+  puts "乗車人数: #{car[:number]}"
+end
+
+car = []
+while true
+  puts "[0]データの登録"
+  puts "[1]データの確認"
+  puts "[2]プログラムの終了"
+  puts "数字を入力してください"
+  input = gets.to_i
+  if input == 0
+    register_data(car)
+  elsif input == 1
+    show_data_list(car)
+  elsif input == 2
+    exit
+  else
+    puts "無効な値です"
+  end
+end
+
+def register_data(cars)
+  puts "車種の入力をして下さい。"
+  type = gets.chomp
+  puts "1Lあたりの走行可能距離(km/l)を入力して下さい。"
+  fuel_economy = gets.to_f
+  puts "乗車可能人数を入力して下さい。"
+  capacity = gets.to_i
+  car = { type: type, fuel_economy: fuel_economy, capacity: capacity }
+  cars << car
+end
+
+def show_cars(cars)
+  cars.each_with_index do |car, index|
+    puts "[#{index}]: #{car[:type]}"
+  end
+  puts "確認したい番号を入力して下さい。"
+  input = gets.to_i
+  car = cars[input]
+  if car
+    show_data(car)
+  else
+    puts "該当する番号はありません。"
+  end
+end
+
+def show_data(car)
+  puts car[:type]
+  puts "1Lあたりの走行可能距離:#{car[:fuel_economy]}km/l"
+  puts "乗車人数:#{car[:capacity]}人"
+end
+
+cars = []
+
+while true do
+  puts "番号を入力して下さい"
+  puts "[0]:登録をする"
+  puts "[1]:データを確認する"
+  puts "[2]:終了する"
+  input = gets.chomp
+
+  case input
+  when "0"
+    register_data(cars)
+  when "1"
+    show_cars(cars)
+  when "2"
+    exit
+  else
+    puts "無効な値です"
+  end
+end %>
